@@ -1,0 +1,16 @@
+FROM node:onbuild
+
+MOUNT .:/src
+WORKDIR /src
+
+VOLUME /root/.npm 1> /dev/null
+
+FROM node:slim
+
+ENV SVC_PATH /opt/service
+
+COPY . $SVC_PATH
+
+CMD cd $SVC_PATH && node app
+
+EXPOSE 8082
