@@ -1,11 +1,11 @@
 url: 'http://localhost:8082'
 
 mongodb:
-  server:   '::MONGODB_HOST_PORT::'
-  database: '::MONGODB_DATABASE::'
-  user:     '::MONGODB_USER::'
-  password: '::MONGODB_PASSWORD::'
-  #connectionString:  mongodb://172.17.0.1:27017     # alternative to setting server, database, user and password separately
+#  server:   '::MONGODB_HOST_PORT::'
+#  database: '::MONGODB_DATABASE::'
+#  user:     '::MONGODB_USER::'
+#  password: '::MONGODB_PASSWORD::'
+   connectionString: '::MONGODB_CONNECT::'     # alternative to setting server, database, user and password separately
 
 monitor:
   name:                   origin
