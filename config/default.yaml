@@ -1,11 +1,11 @@
 url: 'http://localhost:8082'
 
 mongodb:
-#  server:   '::MONGODB_HOST_PORT::'
-#  database: '::MONGODB_DATABASE::'
-#  user:     '::MONGODB_USER::'
-#  password: '::MONGODB_PASSWORD::'
-   connectionString: '::MONGODB_CONNECT::'     # alternative to setting server, database, user and password separately
+  server:   ::MONGODB_HOST_PORT::
+  database: ::MONGODB_DATABASE::
+  user:     ::MONGODB_USER::
+  password: ::MONGODB_PASSWORD::
+  #connectionString:  # alternative to setting server, database, user and password separately
 
 monitor:
   name:                   origin
@@ -27,17 +27,7 @@ plugins:
   - ./plugins/httpOptions
   - ./plugins/basicAuth
 
-  event:
-    up:        true
-    down:      true
-    paused:    false
-    restarted: false
-  message:           
-    from:            # The message sender, e.g. 'Fred Foo <foo@blurdybloop.com>'
-    to:              # The message recipient, e.g. 'bar@blurdybloop.com, baz@blurdybloop.com'
-  # The email plugin also uses the main `url` param for hyperlinks in the sent emails
-
 basicAuth:
-  username: '::AUTH_USER::'
-  password: '::AUTH_PASSWORD::'
+  username: ::AUTH_USER::
+  password: ::AUTH_PASSWORD::
 verbose: false # only used in dev

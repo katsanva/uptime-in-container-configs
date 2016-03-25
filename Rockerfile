@@ -2,19 +2,26 @@ FROM node:onbuild
 
 MOUNT .:/src
 WORKDIR /src
-RUN npm install
-VOLUME /root/.npm
+
+RUN npm install 1> /dev/null
 
 FROM node:slim
 
-ENV SVC_PATH /var/service
-ENV MONGODB_CONNECT 172.17.0.1:27017
-ENV AUTH_USER root
-ENV AUTH_PASSWORD root
+ENV SVC_PATH /opt/uptime
 
-COPY . $SVC_PATH
+ENV MONGODB_HOST_PORT 172.17.0.2:27017
+ENV MONGODB_DATABASE uptime
+ENV MONGODB_USER=root
+ENV AUTH_USER uptime
+ENV AUTH_PASSWORD uptime
 
-CMD cd $SVC_PATH && node app
+ADD . $SVC_PATH 
+
+RUN chmod +x $SVC_PATH/config/*.sh
+
+CMD cd $SVC_PATH/config &&\
+  sh setup_run.sh
 
 EXPOSE 8082
 
+TAG siriusred/uptime:latest
