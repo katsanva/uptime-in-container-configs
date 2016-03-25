@@ -13,8 +13,8 @@ Rocker repo - https://github.com/grammarly/rocker
   <li><b>ENV = Default Value; Description</b></li>
   <li>SVC_PATH = /opt/uptime; Path, where placed uptime files</li>
   <li>MONGODB_HOST_PORT = 172.17.0.2:27017; MongoDB host:port</li>
-  <li>MONGODB_DATABASE = ; Uptime database in MongoDB</li>
-  <li>MONGODB_USER = ; MongoDB credentials</li>
+  <li>MONGODB_DATABASE = uptime; Uptime database in MongoDB</li>
+  <li>MONGODB_USER = root; MongoDB credentials</li>
   <li>MONGODB_PASSWORD = ; </li>
   <li>AUTH_USER = uptime; Login monitor to monitor service</li>
   <li>AUTH_PASSWORD = uptime; </li>
