@@ -1,11 +1,7 @@
-url: 'http://localhost:8082'
+url: 'http://0.0.0.0:8082'
 
 mongodb:
-  server:   ::MONGODB_HOST_PORT::
-  database: ::MONGODB_DATABASE::
-  user:     ::MONGODB_USER::
-  password: ::MONGODB_PASSWORD::
-  #connectionString:  # alternative to setting server, database, user and password separately
+  connectionString: mongodb://[username:password@]host1[:port1]/[dbname] # alternative to setting server, database, user and password separately
 
 monitor:
   name:                   origin
@@ -28,6 +24,6 @@ plugins:
   - ./plugins/basicAuth
 
 basicAuth:
-  username: ::AUTH_USER::
-  password: ::AUTH_PASSWORD::
+  username: admin
+  password: admin
 verbose: false # only used in dev

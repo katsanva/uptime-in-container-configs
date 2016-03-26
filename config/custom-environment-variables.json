@@ -1,0 +1,9 @@
+{
+  "mongodb": {
+    "connectionString": "MONGODB_URI"
+  },
+  "basicAuth": {
+    "username": "SERVICE_USERNAME",
+    "password": "SERVICE_PASSWORD"
+  }
+}

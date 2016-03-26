@@ -2,20 +2,12 @@ version: '2'
 services:
   mongo:
     image: mongo
-    volumes:
-      - "~/data/mongo:/data/db"
     command:
       - --smallfiles
     expose:
       - "27017"
-    ports: 
-      - 27017:27017
-    networks:
-      - default
   uptime:
-    image: siriusred/uptime 
-    volumes:
-      - "~/data/uptime:/var/service/config"
+    image: katsanva/uptime
     ports:
       - 80:8082
     depends_on:
@@ -25,6 +17,6 @@ services:
     networks:
       - default
     environment:
-      - MONGODB_HOST_PORT=172.17.0.2:27017
-      - AUTH_USER=uptime
-      - AUTH_PASSWORD=betlab
+      - MONGODB_URI=mongodb://mongo:27017
+      - SERVICE_USERNAME=guest
+      - SERVICE_PASSWORD=blabla

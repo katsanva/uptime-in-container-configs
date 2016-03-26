@@ -1,27 +1,24 @@
-FROM node:onbuild
-
-MOUNT .:/src
-WORKDIR /src
-
-RUN npm install 1> /dev/null
-
-FROM node:slim
+FROM node:latest
 
 ENV SVC_PATH /opt/uptime
 
-ENV MONGODB_HOST_PORT 172.17.0.2:27017
-ENV MONGODB_DATABASE uptime
-ENV MONGODB_USER=root
-ENV AUTH_USER uptime
-ENV AUTH_PASSWORD uptime
+RUN cd /opt && \
+    git clone git://github.com/fzaninotto/uptime.git
+RUN cd $SVC_PATH && npm install && \
+    npm install config@1.19.0
 
-ADD . $SVC_PATH 
+ADD ./config $SVC_PATH/config
 
-RUN chmod +x $SVC_PATH/config/*.sh
+EXPORT /opt/uptime /
 
-CMD cd $SVC_PATH/config &&\
-  sh setup_run.sh
+FROM node:slim
+
+IMPORT /uptime /opt/
+
+WORKDIR /opt/uptime
 
 EXPOSE 8082
 
-TAG siriusred/uptime:latest
+CMD ["node", "app.js"]
+
+TAG katsanva/uptime:latest
